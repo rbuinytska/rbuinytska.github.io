@@ -39,6 +39,23 @@ const translations = {
     "about.title": "Analytická precíznosť s porozumením softvérovej architektúry",
     "about.subtitle": "Prepájanie biznisových očakávaní, dátového modelovania a štandardov projektového riadenia",
     "about.quote": "Som inžinierka Informačného manažmentu so zameraním na <strong>IT analýzu</strong>, <strong>riadenie IT projektov</strong> a <strong>dáta</strong>. Vďaka praxi v softvérovom vývoji do hĺbky rozumiem technologickému pozadiu. To mi umožňuje byť <strong>rovnocenným partnerom pre vývojárov</strong> a navrhovať riešenia, ktoré presne spĺňajú biznisové očakávania a dajú sa reálne implementovať.",
+
+    // Workflow Pipeline
+    "workflow.tag": "METODIKA & PROCES",
+    "workflow.title": "Proces IT Analýzy & Projektovej Dodávky",
+    "workflow.subtitle": "Ako prepájam požiadavky stakeholderov s agilnou realizáciou vo vývojovom tíme",
+    "workflow.s1.step": "01",
+    "workflow.s1.title": "Biznis Požiadavky",
+    "workflow.s1.desc": "Zber a dekompozícia potrieb stakeholderov, Use Cases a definícia cieľov.",
+    "workflow.s2.step": "02",
+    "workflow.s2.title": "Systémový Návrh",
+    "workflow.s2.desc": "UML diagramy (activity, sequence), BPMN procesy v Enterprise Architect.",
+    "workflow.s3.step": "03",
+    "workflow.s3.title": "API & Dátové Schémy",
+    "workflow.s3.desc": "REST API kontrakty, dátové JSON schémy a detailné edge-cases.",
+    "workflow.s4.step": "04",
+    "workflow.s4.title": "Agilná Dodávka (SCRUM)",
+    "workflow.s4.desc": "Sprint backlog, koordinácia s vývojármi a akceptačné testovanie.",
     
     // 4 Pillars
     "pillar1.title": "IT Systémová Analýza & Špecifikácie",
@@ -189,6 +206,23 @@ const translations = {
     "about.title": "Analytical rigor grounded in software architecture expertise",
     "about.subtitle": "Aligning business objectives, data modeling, and project governance standards",
     "about.quote": "I am an Information Management engineer specializing in <strong>IT analysis</strong>, <strong>IT project management</strong>, and <strong>data</strong>. With hands-on experience in software development, I thoroughly understand the technical landscape. This allows me to act as an <strong>equal partner to software developers</strong> and design solutions that precisely satisfy business requirements and can be realistically implemented.",
+
+    // Workflow Pipeline
+    "workflow.tag": "METHODOLOGY & PIPELINE",
+    "workflow.title": "Systems Analysis & Project Delivery Workflow",
+    "workflow.subtitle": "Translating stakeholder goals into robust agile software execution",
+    "workflow.s1.step": "01",
+    "workflow.s1.title": "Requirements Discovery",
+    "workflow.s1.desc": "Gathering and decomposing stakeholder goals, Use Cases, and scope boundaries.",
+    "workflow.s2.step": "02",
+    "workflow.s2.title": "Systems Modeling",
+    "workflow.s2.desc": "UML activity and sequence diagrams, BPMN workflows in Enterprise Architect.",
+    "workflow.s3.step": "03",
+    "workflow.s3.title": "API & Data Contracts",
+    "workflow.s3.desc": "REST API endpoints, JSON schema specifications, and edge-case handling.",
+    "workflow.s4.step": "04",
+    "workflow.s4.title": "Agile SCRUM Delivery",
+    "workflow.s4.desc": "Sprint backlog execution, developer coordination, and acceptance criteria.",
     
     // 4 Pillars
     "pillar1.title": "IT Systems Analysis & Specifications",

@@ -222,66 +222,127 @@
             </div>
           </div>
 
-          <div class="pillars-grid">
-            <!-- Pillar 1: Analysis & Specifications -->
-            <div class="pillar-card glass-panel">
-              <div class="pillar-svg-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="14" width="7" height="7"></rect>
-                  <rect x="3" y="14" width="7" height="7"></rect>
-                  <path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"></path>
-                </svg>
+          <!-- Bento Grid: Workflow Pipeline Card (Full Width) -->
+          <div class="bento-pipeline-card glass-panel">
+            <div class="pipeline-header">
+              <span class="pipeline-tag" data-i18n="workflow.tag">METODIKA & PROCES</span>
+              <h3 class="pipeline-title" data-i18n="workflow.title">Proces IT Analýzy & Projektovej Dodávky</h3>
+              <p class="pipeline-subtitle" data-i18n="workflow.subtitle">Ako prepájam požiadavky stakeholderov s agilnou realizáciou vo vývojovom tíme</p>
+            </div>
+
+            <div class="pipeline-steps">
+              <!-- Step 1 -->
+              <div class="pipeline-step">
+                <div class="step-top">
+                  <span class="step-num" data-i18n="workflow.s1.step">01</span>
+                  <span class="step-arrow">&rarr;</span>
+                </div>
+                <h4 class="step-title" data-i18n="workflow.s1.title">Biznis Požiadavky</h4>
+                <p class="step-desc" data-i18n="workflow.s1.desc">Zber a dekompozícia potrieb stakeholderov, Use Cases a definícia cieľov.</p>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="pipeline-step">
+                <div class="step-top">
+                  <span class="step-num" data-i18n="workflow.s2.step">02</span>
+                  <span class="step-arrow">&rarr;</span>
+                </div>
+                <h4 class="step-title" data-i18n="workflow.s2.title">Systémový Návrh</h4>
+                <p class="step-desc" data-i18n="workflow.s2.desc">UML diagramy (activity, sequence), BPMN procesy v Enterprise Architect.</p>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="pipeline-step">
+                <div class="step-top">
+                  <span class="step-num" data-i18n="workflow.s3.step">03</span>
+                  <span class="step-arrow">&rarr;</span>
+                </div>
+                <h4 class="step-title" data-i18n="workflow.s3.title">API & Dátové Schémy</h4>
+                <p class="step-desc" data-i18n="workflow.s3.desc">REST API kontrakty, dátové JSON schémy a detailné edge-cases.</p>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="pipeline-step">
+                <div class="step-top">
+                  <span class="step-num" data-i18n="workflow.s4.step">04</span>
+                  <span class="step-arrow">&check;</span>
+                </div>
+                <h4 class="step-title" data-i18n="workflow.s4.title">Agilná Dodávka (SCRUM)</h4>
+                <p class="step-desc" data-i18n="workflow.s4.desc">Sprint backlog, koordinácia s vývojármi a akceptačné testovanie.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Grid: 3 Competency Pillars -->
+          <div class="bento-cards-row">
+            <!-- Card 1: Analysis -->
+            <div class="bento-card glass-panel">
+              <div class="bento-card-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    <path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"></path>
+                  </svg>
+                </div>
+                <span class="bento-badge">EA & UML</span>
               </div>
               <h3 data-i18n="pillar1.title">IT Systémová Analýza & Špecifikácie</h3>
               <p data-i18n="pillar1.desc">
                 Modelovanie v UML a BPMN (Enterprise Architect, Draw.io), detailná dekompozícia požiadaviek stakeholderov do funkčných a technických špecifikácií, návrh API kontraktov (REST, JSON) a User Stories bez logických medzier.
               </p>
+              <div class="bento-chips">
+                <span class="bento-chip">UML / BPMN</span>
+                <span class="bento-chip">Enterprise Architect</span>
+                <span class="bento-chip">REST API & JSON</span>
+              </div>
             </div>
 
-            <!-- Pillar 2: Project Management & Agile -->
-            <div class="pillar-card glass-panel">
-              <div class="pillar-svg-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <path d="M9 12l2 2 4-4"></path>
-                </svg>
+            <!-- Card 2: PM -->
+            <div class="bento-card glass-panel">
+              <div class="bento-card-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                  </svg>
+                </div>
+                <span class="bento-badge highlight">IPMA Certified</span>
               </div>
               <h3 data-i18n="pillar2.title">IT Projektový Manažment & Agilita</h3>
               <p data-i18n="pillar2.desc">
                 Medzinárodná certifikácia IPMA Project Management Fundamentals, riadenie v agilných rámcoch SCRUM a Kanban, prioritizácia backlogu, koordinácia dodávky, riadenie rizík a aplikácia princípov PRINCE2 a ITIL.
               </p>
+              <div class="bento-chips">
+                <span class="bento-chip">IPMA Fundamentals</span>
+                <span class="bento-chip">SCRUM / Agile</span>
+                <span class="bento-chip">Risk Management</span>
+              </div>
             </div>
 
-            <!-- Pillar 3: Data & BI Analytics -->
-            <div class="pillar-card glass-panel">
-              <div class="pillar-svg-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                </svg>
+            <!-- Card 3: Data & BI -->
+            <div class="bento-card glass-panel">
+              <div class="bento-card-top">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                  </svg>
+                </div>
+                <span class="bento-badge">BI & SQL</span>
               </div>
               <h3 data-i18n="pillar3.title">Dátové Modelovanie & BI Analytika</h3>
               <p data-i18n="pillar3.desc">
                 Práca s relačnými databázami a Oracle SQL, transformácie dátových tokov (ETL), tvorba analytických modelov a interaktívnych reportovacích dashboardov v Power BI a Tableau pre podporu strategických biznis rozhodnutí.
               </p>
-            </div>
-
-            <!-- Pillar 4: Software Dev Foundation -->
-            <div class="pillar-card glass-panel">
-              <div class="pillar-svg-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                  <line x1="14" y1="4" x2="10" y2="20"></line>
-                </svg>
+              <div class="bento-chips">
+                <span class="bento-chip">Oracle SQL</span>
+                <span class="bento-chip">Power BI & DAX</span>
+                <span class="bento-chip">ETL Pipelines</span>
               </div>
-              <h3 data-i18n="pillar4.title">Technický Background z Vývoja</h3>
-              <p data-i18n="pillar4.desc">
-                Praktická skúsenosť zo softvérového vývoja (Kotlin/KMP, Java, Git, Android), vďaka ktorej odbúravam komunikačnú bariéru s vývojármi a viem posúdiť technickú realizovateľnosť a náročnosť zadaní.
-              </p>
             </div>
           </div>
         </div>
@@ -700,6 +761,11 @@
             <p class="project-desc" data-i18n="proj.esg.desc">
               Komplexné spracovanie a transformácia dát environmentálneho a sociálneho riadenia (ESG). Implementácia interaktívnych reportovacích panelov v Power BI na báze kľúčových biznisových indikátorov.
             </p>
+            <div class="project-metrics-preview">
+              <div class="metric-pill"><span>Architektúra dát:</span> <span class="metric-val">Star Schema & DAX</span></div>
+              <div class="metric-pill"><span>Dátový tok:</span> <span class="metric-val">Automatizované ETL</span></div>
+              <div class="metric-pill"><span>Výstup:</span> <span class="metric-val">Power BI Dashboard</span></div>
+            </div>
             <div class="project-tags">
               <span>Power BI</span>
               <span>DAX</span>
@@ -728,6 +794,11 @@
             <p class="project-desc" data-i18n="proj.ml.desc">
               Výskumný projekt bakalárskej práce: predspracovanie rozsiahlych datasetov, trénovanie algoritmov strojového učenia v Pythone a vyhodnocovanie presnosti modelov.
             </p>
+            <div class="project-metrics-preview">
+              <div class="metric-pill"><span>Úloha:</span> <span class="metric-val">Supervised ML Predikcia</span></div>
+              <div class="metric-pill"><span>Spracovanie:</span> <span class="metric-val">Pandas & Feature Eng.</span></div>
+              <div class="metric-pill"><span>Vyhodnotenie:</span> <span class="metric-val">Metriky presnosti modelov</span></div>
+            </div>
             <div class="project-tags">
               <span>Python</span>
               <span>Machine Learning</span>
