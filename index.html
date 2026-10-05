@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="sk" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Ruslana Buinytska | IT Analyst & Android Developer</title>
+  <meta name="description" content="Osobný web a portfólio Ruslany Buinytskej. Inžinierka Informačného manažmentu, IT analýza, Android vývoj (KMP), dáta & AI.">
+  <meta name="author" content="Ruslana Buinytska">
+  <meta name="keywords" content="Ruslana Buinytska, IT Analyst, Android Developer, Kotlin, KMP, Data Science, AI, Bratislava, EUBA, TUKE">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Ruslana Buinytska | IT Analyst & Android Developer">
+  <meta property="og:description" content="Inžinierka Informačného manažmentu so zameraním na IT analýzu, dáta a umelú inteligenciu.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/profile.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Early theme script to prevent FOUC -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+      const meta = document.querySelector('meta[name="color-scheme"]');
+      if (meta) meta.content = theme;
+    })();
+  </script>
+</head>
+<body>
+  <!-- Ambient Background Glows -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-right" aria-hidden="true"></div>
+  <div class="ambient-glow glow-left" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" aria-label="Hlavná navigácia">
+      <a href="#hero" class="nav-brand" aria-label="Ruslana Buinytska Domov">
+        <span class="brand-monogram">RB</span>
+        <span class="brand-name">Ruslana <span class="text-gradient">Buinytska</span></span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link" data-i18n="nav.about">O mne</a>
+        <a href="#experience" class="nav-link" data-i18n="nav.experience">Skúsenosti</a>
+        <a href="#skills" class="nav-link" data-i18n="nav.skills">Zručnosti</a>
+        <a href="#education" class="nav-link" data-i18n="nav.education">Vzdelanie</a>
+        <a href="#projects" class="nav-link" data-i18n="nav.projects">Projekty</a>
+        <a href="#contact" class="nav-link" data-i18n="nav.contact">Kontakt</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switch" role="group" aria-label="Jazyk">
+          <button type="button" class="lang-btn active" id="lang-sk" data-lang="sk" title="Slovenčina">SK</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" id="lang-en" data-lang="en" title="English">EN</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button type="button" class="theme-toggle-btn" id="themeToggle" aria-label="Prepnúť tmavý/svetlý režim" title="Prepnúť režim">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- CV Download Action -->
+        <a href="assets/Ruslana_Buinytska_CV.pdf" download="Ruslana_Buinytska_CV.pdf" class="btn btn-outline btn-sm nav-cv-btn" id="navCvBtn" title="Stiahnuť originálne CV v PDF">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-i18n="nav.downloadCv">CV (PDF)</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Otvoriť menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulsing-dot"></span>
+            <span data-i18n="hero.badge">Otvorená novým výzvam & projektom</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span data-i18n="hero.greeting">Ahoj, ja som</span><br>
+            <span class="text-gradient highlight-name">Ruslana Buinytska</span>
+          </h1>
+
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Inžinierka Informačného manažmentu • IT Analýza • Android Developer • Dáta & AI
+          </p>
+
+          <p class="hero-description" data-i18n="hero.description">
+            Prepájam svet biznisu so softvérovým inžinierstvom. Vďaka praxi vo vývoji rozumiem technologickému pozadiu a navrhujem IT riešenia, ktoré presne spĺňajú biznisové ciele a dajú sa reálne implementovať.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span data-i18n="hero.ctaProjects">Pozrieť projekty</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <a href="assets/Ruslana_Buinytska_CV.pdf" target="_blank" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span data-i18n="hero.ctaDownload">Stiahnuť CV v PDF</span>
+            </a>
+
+            <a href="#contact" class="btn btn-ghost" data-i18n="hero.ctaContact">
+              Kontaktovať
+            </a>
+          </div>
+
+          <div class="hero-quick-stats">
+            <div class="stat-item">
+              <span class="stat-number">PhD.</span>
+              <span class="stat-label" data-i18n="hero.stat1">Data Science v ekonómii</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">Ing.</span>
+              <span class="stat-label" data-i18n="hero.stat2">Informačný manažment</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">WBPO</span>
+              <span class="stat-label" data-i18n="hero.stat3">Android vývoj & analýza</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="photo-card-wrapper">
+            <div class="photo-glow-effect"></div>
+            <div class="photo-frame">
+              <img src="assets/profile.jpg" alt="Ruslana Buinytska - IT Analyst & Android Developer" class="profile-img" width="480" height="640" fetchpriority="high">
+            </div>
+
+            <!-- Floating Badges -->
+            <div class="floating-badge badge-1">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="badge-text">
+                <span class="badge-title" data-i18n="badge.phd">PhD. Výskum</span>
+                <span class="badge-sub">Data Science EUBA</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-2">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              </div>
+              <div class="badge-text">
+                <span class="badge-title" data-i18n="badge.dev">Android & KMP</span>
+                <span class="badge-sub">Kotlin Developer</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-3">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 3.3 2 6.2 5 7.4V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2.6c3-1.2 5-4.1 5-7.4a8 8 0 0 0-8-8z"></path></svg>
+              </div>
+              <div class="badge-text">
+                <span class="badge-title" data-i18n="badge.ai">AI & Agenti</span>
+                <span class="badge-sub">LLM & AIDD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="about.tag">O MNE</span>
+          <h2 class="section-title" data-i18n="about.title">Prepájam biznis a technológie</h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">
+            Hlboké porozumenie IT procesom, dátam a modernému softvérovému vývoju
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-main-card glass-panel">
+            <div class="quote-icon">“</div>
+            <p class="about-quote" data-i18n="about.quote">
+              Som inžinierka Informačného manažmentu so zameraním na <strong>IT analýzu</strong>, <strong>dáta</strong> a <strong>umelú inteligenciu</strong>. Vďaka praxi v softvérovom vývoji do hĺbky rozumiem technologickému pozadiu. To mi umožňuje byť <strong>rovnocenným partnerom pre vývojárov</strong> a navrhovať riešenia, ktoré presne spĺňajú biznisové očakávania a dajú sa reálne implementovať.
+            </p>
+            <div class="about-meta-chips">
+              <span class="meta-chip">📍 Bratislava, Slovensko</span>
+              <span class="meta-chip">🎓 PhD. Student EUBA</span>
+              <span class="meta-chip">💼 WBPO Android Dev</span>
+              <span class="meta-chip">🚀 AIDD Enthusiast</span>
+            </div>
+          </div>
+
+          <div class="pillars-grid">
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">📐</div>
+              <h3 data-i18n="pillar1.title">IT Analýza & Modelovanie</h3>
+              <p data-i18n="pillar1.desc">
+                Tvorba UML, BPMN diagramov, Enterprise Architect, analýza požiadaviek, špecifikácie rozhraní a systémový návrh bez medzier v logike.
+              </p>
+            </div>
+
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">📱</div>
+              <h3 data-i18n="pillar2.title">Vývoj & Aplikačná logika</h3>
+              <p data-i18n="pillar2.desc">
+                Vývoj v Kotline (KMP), Java, návrh integračných REST API, práca s JSON/XML, git a agilná tímová spolupráca.
+              </p>
+            </div>
+
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">📊</div>
+              <h3 data-i18n="pillar3.title">Dáta & Business Intelligence</h3>
+              <p data-i18n="pillar3.desc">
+                Oracle SQL, relačné databázy, interaktívny reporting v Power BI, analýza v Pythone, R a Tableau pre biznis rozhodovanie.
+              </p>
+            </div>
+
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">🤖</div>
+              <h3 data-i18n="pillar4.title">Umelá inteligencia & Agenti</h3>
+              <p data-i18n="pillar4.desc">
+                Lokálne modely, LLM integrácia, tvorba a orchestrácia AI agentov a AI-Driven Development (AIDD) zrýchľujúci vývoj.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="exp.tag">KARIÉRA & SKÚSENOSTI</span>
+          <h2 class="section-title" data-i18n="exp.title">Pracovné skúsenosti a prax</h2>
+          <p class="section-subtitle" data-i18n="exp.subtitle">Reálne projekty, analytická práca a technické riešenia</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Job 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel">
+              <div class="card-top-meta">
+                <span class="badge-period">2025 – súčasnosť</span>
+                <span class="badge-role-tag">Súčasná pozícia</span>
+              </div>
+              <h3 class="role-title">Android Developer</h3>
+              <h4 class="company-name">WBPO</h4>
+              <ul class="role-bullets">
+                <li data-i18n="exp.wbpo.b1">Samostatné rozpracovanie zadaní do analýzy použiteľnej pre vývoj a návrh aplikačnej logiky.</li>
+                <li data-i18n="exp.wbpo.b2">Návrh integračných rozhraní (REST API, JSON) a aktívna komunikácia s backend vývojármi a architektmi.</li>
+                <li data-i18n="exp.wbpo.b3">Príprava testovacích scenárov, riešenie okrajových prípadov (edge cases) a chybových stavov, spolupráca v agilnom SCRUM tíme.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">Android</span>
+                <span class="tag">Kotlin (KMP)</span>
+                <span class="tag">REST API</span>
+                <span class="tag">JSON</span>
+                <span class="tag">System Design</span>
+                <span class="tag">Agile / SCRUM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel">
+              <div class="card-top-meta">
+                <span class="badge-period">Vlastný projekt</span>
+                <a href="https://github.com/RusBuin/esg-analysis-powerbi" target="_blank" rel="noopener noreferrer" class="link-external" title="Pozrieť GitHub repozitár">
+                  <span>github.com/RusBuin/esg-analysis-powerbi</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <h3 class="role-title" data-i18n="exp.esg.title">ESG Data Analýza a Vizualizácia</h3>
+              <h4 class="company-name" data-i18n="exp.esg.subtitle">Analytický projekt / Power BI</h4>
+              <ul class="role-bullets">
+                <li data-i18n="exp.esg.b1">Zber, čistenie, transformácia a modelovanie dát pre analytické a reportingové účely.</li>
+                <li data-i18n="exp.esg.b2">Návrh a implementácia interaktívnych dashboardov na základe kľúčových biznisových metrík a ESG indikátorov.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">Power BI</span>
+                <span class="tag">ESG Metrics</span>
+                <span class="tag">Data Modeling</span>
+                <span class="tag">ETL</span>
+                <span class="tag">Data Visualization</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel">
+              <div class="card-top-meta">
+                <span class="badge-period">Bakalárska práca</span>
+                <a href="https://github.com/RusBuin/bakalarska_praca.git" target="_blank" rel="noopener noreferrer" class="link-external" title="Pozrieť GitHub repozitár">
+                  <span>github.com/RusBuin/bakalarska_praca</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <h3 class="role-title" data-i18n="exp.bp.title">Trénovanie AI Modelu a Analýza Dát</h3>
+              <h4 class="company-name">Technická univerzita v Košiciach</h4>
+              <ul class="role-bullets">
+                <li data-i18n="exp.bp.b1">Analýza komplexných dátových sád, predspracovanie dát a natrénovanie modelu strojového učenia.</li>
+                <li data-i18n="exp.bp.b2">Vyhodnocovanie výsledkov, logické a analytické riešenie optimalizačných výziev a vyhodnotenie presnosti.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Preprocessing</span>
+                <span class="tag">Model Evaluation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="skills.tag">KOMPETENCIE</span>
+          <h2 class="section-title" data-i18n="skills.title">Zručnosti & Technologický Stack</h2>
+          <p class="section-subtitle" data-i18n="skills.subtitle">Kombinácia analytického myslenia, dát a moderných vývojových nástrojov</p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="skill-tabs" role="tablist">
+          <button class="skill-tab active" data-filter="all" role="tab" aria-selected="true" data-i18n="skills.tabAll">Všetky zručnosti</button>
+          <button class="skill-tab" data-filter="analysis" role="tab" aria-selected="false" data-i18n="skills.tabAnalysis">IT Analýza</button>
+          <button class="skill-tab" data-filter="data" role="tab" aria-selected="false" data-i18n="skills.tabData">Dáta & SQL</button>
+          <button class="skill-tab" data-filter="dev" role="tab" aria-selected="false" data-i18n="skills.tabDev">Vývoj & Kód</button>
+          <button class="skill-tab" data-filter="ai" role="tab" aria-selected="false" data-i18n="skills.tabAi">Umelá Inteligencia</button>
+          <button class="skill-tab" data-filter="method" role="tab" aria-selected="false" data-i18n="skills.tabMethod">Metodiky</button>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1: IT Analysis -->
+          <div class="skill-card glass-panel" data-category="analysis">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap icon-purple">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              </div>
+              <div>
+                <h3 class="skill-cat-title" data-i18n="skills.cat1.title">IT Analýza & Modelovanie</h3>
+                <span class="skill-cat-sub" data-i18n="skills.cat1.sub">Systémový dizajn a dokumentácia</span>
+              </div>
+            </div>
+            <div class="skill-items-list">
+              <span class="skill-badge highlight">UML</span>
+              <span class="skill-badge highlight">BPMN</span>
+              <span class="skill-badge">Enterprise Architect (EA)</span>
+              <span class="skill-badge">Draw.io</span>
+              <span class="skill-badge">Návrh systémov</span>
+              <span class="skill-badge">Technická dokumentácia</span>
+              <span class="skill-badge">Analýza požiadaviek</span>
+              <span class="skill-badge">Tvorba špecifikácií</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Data & Databases -->
+          <div class="skill-card glass-panel" data-category="data">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap icon-cyan">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              </div>
+              <div>
+                <h3 class="skill-cat-title" data-i18n="skills.cat2.title">Dáta & Databázy</h3>
+                <span class="skill-cat-sub" data-i18n="skills.cat2.sub">SQL, vizualizácia a reporting</span>
+              </div>
+            </div>
+            <div class="skill-items-list">
+              <span class="skill-badge highlight">Oracle SQL</span>
+              <span class="skill-badge highlight">Relačné databázy</span>
+              <span class="skill-badge highlight">Power BI</span>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">R</span>
+              <span class="skill-badge">Tableau</span>
+              <span class="skill-badge">Dátové modelovanie</span>
+              <span class="skill-badge">ETL transformácie</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Tech & Dev -->
+          <div class="skill-card glass-panel" data-category="dev">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap icon-emerald">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <div>
+                <h3 class="skill-cat-title" data-i18n="skills.cat3.title">Technológie & Vývoj</h3>
+                <span class="skill-cat-sub" data-i18n="skills.cat3.sub">Mobilný a backend vývoj</span>
+              </div>
+            </div>
+            <div class="skill-items-list">
+              <span class="skill-badge highlight">Kotlin (KMP)</span>
+              <span class="skill-badge highlight">REST API</span>
+              <span class="skill-badge">JSON / XML</span>
+              <span class="skill-badge">Java</span>
+              <span class="skill-badge">HTML5 & CSS3</span>
+              <span class="skill-badge">Git & GitHub</span>
+              <span class="skill-badge">Android SDK</span>
+              <span class="skill-badge">Aplikačná architektúra</span>
+            </div>
+          </div>
+
+          <!-- Category 4: AI & Machine Learning -->
+          <div class="skill-card glass-panel" data-category="ai">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap icon-amber">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </div>
+              <div>
+                <h3 class="skill-cat-title" data-i18n="skills.cat4.title">Umelá Inteligencia (AI)</h3>
+                <span class="skill-cat-sub" data-i18n="skills.cat4.sub">Agenti a pokročilé modely</span>
+              </div>
+            </div>
+            <div class="skill-items-list">
+              <span class="skill-badge highlight">LLM Integrácia</span>
+              <span class="skill-badge highlight">AI Agenti & Orchestrácia</span>
+              <span class="skill-badge">Lokálne AI modely</span>
+              <span class="skill-badge">AI-Driven Development (AIDD)</span>
+              <span class="skill-badge">Trénovanie ML modelov</span>
+              <span class="skill-badge">Data Science</span>
+            </div>
+          </div>
+
+          <!-- Category 5: Methodologies & Frameworks -->
+          <div class="skill-card glass-panel" data-category="method">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap icon-rose">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div>
+                <h3 class="skill-cat-title" data-i18n="skills.cat5.title">Metodiky & Nástroje</h3>
+                <span class="skill-cat-sub" data-i18n="skills.cat5.sub">Projektové a tímové riadenie</span>
+              </div>
+            </div>
+            <div class="skill-items-list">
+              <span class="skill-badge highlight">SCRUM</span>
+              <span class="skill-badge highlight">Agile</span>
+              <span class="skill-badge">ITIL</span>
+              <span class="skill-badge">PRINCE2</span>
+              <span class="skill-badge">IPMA Fundamentals</span>
+              <span class="skill-badge">Agilné testovanie</span>
+            </div>
+          </div>
+
+          <!-- Category 6: Languages -->
+          <div class="skill-card glass-panel" data-category="all">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap icon-blue">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </div>
+              <div>
+                <h3 class="skill-cat-title" data-i18n="skills.cat6.title">Jazykové Znalosti</h3>
+                <span class="skill-cat-sub" data-i18n="skills.cat6.sub">Medzinárodná komunikácia</span>
+              </div>
+            </div>
+            <div class="lang-bars-list">
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-name" data-i18n="lang.uk">Ukrajinčina</span>
+                  <span class="lang-level badge-native" data-i18n="lang.native">Materinský</span>
+                </div>
+                <div class="lang-progress-bar"><div class="progress-fill fill-100"></div></div>
+              </div>
+
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-name" data-i18n="lang.ru">Ruština</span>
+                  <span class="lang-level badge-native" data-i18n="lang.native">Materinský</span>
+                </div>
+                <div class="lang-progress-bar"><div class="progress-fill fill-100"></div></div>
+              </div>
+
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-name" data-i18n="lang.sk">Slovenčina</span>
+                  <span class="lang-level badge-b2">B2 (Plynulá úroveň)</span>
+                </div>
+                <div class="lang-progress-bar"><div class="progress-fill fill-85"></div></div>
+              </div>
+
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-name" data-i18n="lang.en">Angličtina</span>
+                  <span class="lang-level badge-b1">B1 (Pracovná úroveň)</span>
+                </div>
+                <div class="lang-progress-bar"><div class="progress-fill fill-65"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section class="section edu-section" id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="edu.tag">KVALIFIKÁCIA</span>
+          <h2 class="section-title" data-i18n="edu.title">Vzdelanie & Certifikáty</h2>
+          <p class="section-subtitle" data-i18n="edu.subtitle">Akademický rast a medzinárodné odborné workshopy</p>
+        </div>
+
+        <div class="edu-grid">
+          <!-- Education Column -->
+          <div class="edu-column">
+            <h3 class="col-heading">
+              <span class="col-icon">🎓</span>
+              <span data-i18n="edu.col1Title">Akademické vzdelanie</span>
+            </h3>
+
+            <div class="edu-card glass-panel">
+              <div class="edu-period">2026 – súčasnosť</div>
+              <h4 class="edu-degree">Data Science v ekonómii (PhD.)</h4>
+              <p class="edu-school">Ekonomická univerzita v Bratislave, Slovensko</p>
+              <p class="edu-focus" data-i18n="edu.phdFocus">Doktorandské štúdium a výskum zameraný na pokročilé dátové metódy a AI v ekonomických procesoch.</p>
+            </div>
+
+            <div class="edu-card glass-panel">
+              <div class="edu-period">2024 – 2026</div>
+              <h4 class="edu-degree">Informačný manažment (Ing.)</h4>
+              <p class="edu-school">Ekonomická univerzita v Bratislave, Slovensko</p>
+              <p class="edu-focus" data-i18n="edu.ingFocus">Inžinierske štúdium: riadenie IT procesov, podnikové informačné systémy, IT analýza a riadenie projektov.</p>
+            </div>
+
+            <div class="edu-card glass-panel">
+              <div class="edu-period">2022 – 2024</div>
+              <h4 class="edu-degree">Hospodárska informatika (Bc.)</h4>
+              <p class="edu-school">Technická univerzita v Košiciach, Slovensko</p>
+              <p class="edu-focus" data-i18n="edu.bcFocus">Bakalárske štúdium: softvérové inžinierstvo, databázy, algoritmy a trénovanie modelov strojového učenia.</p>
+            </div>
+          </div>
+
+          <!-- Certifications Column -->
+          <div class="edu-column">
+            <h3 class="col-heading">
+              <span class="col-icon">🏆</span>
+              <span data-i18n="edu.col2Title">Certifikáty & Workshopy</span>
+            </h3>
+
+            <div class="cert-card glass-panel">
+              <div class="cert-year">2025</div>
+              <div class="cert-info">
+                <h4 class="cert-title">Certifikát IPMA Project Management Fundamentals</h4>
+                <p class="cert-org">IPMA Slovensko</p>
+                <p class="cert-desc" data-i18n="cert.ipma">Medzinárodný štandard riadenia projektov, metodiky a procesné kompetencie.</p>
+              </div>
+            </div>
+
+            <div class="cert-card glass-panel">
+              <div class="cert-year">2025</div>
+              <div class="cert-info">
+                <h4 class="cert-title">Sustainable Project Management #HACKATHON2025</h4>
+                <p class="cert-org">Hackathon 2025</p>
+                <p class="cert-desc" data-i18n="cert.hackathon">Riešenie udržateľných výziev s využitím agilných projektových prístupov a tímovej spolupráce.</p>
+              </div>
+            </div>
+
+            <div class="cert-card glass-panel">
+              <div class="cert-year">2022</div>
+              <div class="cert-info">
+                <h4 class="cert-title">Účastníčka Agile workshopu „LEGO SCRUM & TUKE“</h4>
+                <p class="cert-org">Technická univerzita v Košiciach</p>
+                <p class="cert-desc" data-i18n="cert.scrum">* Praktická znalosť agilných metodík, sprintov a SCRUM frameworku.</p>
+              </div>
+            </div>
+
+            <div class="cert-card glass-panel">
+              <div class="cert-year">2022</div>
+              <div class="cert-info">
+                <h4 class="cert-title">Kurz „Skills for Success“</h4>
+                <p class="cert-org">Americká obchodná komora (AmCham Slovakia)</p>
+                <p class="cert-desc" data-i18n="cert.amcham">Úspešne ukončený intenzívny program rozvoja soft-skills, vyjednávania a biznis komunikácie.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="proj.tag">PORTFÓLIO</span>
+          <h2 class="section-title" data-i18n="proj.title">Vybrané Projekty</h2>
+          <p class="section-subtitle" data-i18n="proj.subtitle">Ukážky kódu, analýz a dátových projektov na GitHube</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project-card glass-panel">
+            <div class="project-card-header">
+              <div class="folder-icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/RusBuin/esg-analysis-powerbi" target="_blank" rel="noopener noreferrer" class="icon-link" title="Otvoriť na GitHube" aria-label="GitHub repozitár ESG analýza">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">ESG Data Analýza a Vizualizácia</h3>
+            <p class="project-desc" data-i18n="proj.esg.desc">
+              Komplexné spracovanie a transformácia dát environmentálneho a sociálneho riadenia (ESG). Implementácia interaktívnych reportovacích panelov v Power BI na báze kľúčových biznisových indikátorov.
+            </p>
+            <div class="project-tags">
+              <span>Power BI</span>
+              <span>DAX</span>
+              <span>Data Analysis</span>
+              <span>ETL</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/RusBuin/esg-analysis-powerbi" target="_blank" rel="noopener noreferrer" class="project-arrow-link">
+                <span data-i18n="proj.viewRepo">Pozrieť na GitHube</span> &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="project-card glass-panel">
+            <div class="project-card-header">
+              <div class="folder-icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/RusBuin/bakalarska_praca.git" target="_blank" rel="noopener noreferrer" class="icon-link" title="Otvoriť na GitHube" aria-label="GitHub repozitár Bakalárska práca">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title" data-i18n="proj.ml.title">ML Model & Dátová Analýza</h3>
+            <p class="project-desc" data-i18n="proj.ml.desc">
+              Výskumný projekt bakalárskej práce: predspracovanie rozsiahlych datasetov, trénovanie algoritmov strojového učenia v Pythone a vyhodnocovanie presnosti modelov.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Machine Learning</span>
+              <span>Pandas</span>
+              <span>Scikit-Learn</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/RusBuin/bakalarska_praca.git" target="_blank" rel="noopener noreferrer" class="project-arrow-link">
+                <span data-i18n="proj.viewRepo">Pozrieť na GitHube</span> &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project-card glass-panel">
+            <div class="project-card-header">
+              <div class="folder-icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/RusBuin/portfolio" target="_blank" rel="noopener noreferrer" class="icon-link" title="Otvoriť na GitHube" aria-label="GitHub repozitár Portfolio">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title" data-i18n="proj.port.title">Developer & Research Portfolio</h3>
+            <p class="project-desc" data-i18n="proj.port.desc">
+              Centrálny repozitár a prehľad vývojových zadaní, analýz a projektových archívov. Zdieľanie kódu a dokumentácie pre komunitu a partnerov.
+            </p>
+            <div class="project-tags">
+              <span>Git</span>
+              <span>Documentation</span>
+              <span>Open Source</span>
+              <span>Architecture</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/RusBuin/portfolio" target="_blank" rel="noopener noreferrer" class="project-arrow-link">
+                <span data-i18n="proj.viewRepo">Pozrieť na GitHube</span> &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="contact.tag">SPOJME SA</span>
+          <h2 class="section-title" data-i18n="contact.title">Kontaktujte ma</h2>
+          <p class="section-subtitle" data-i18n="contact.subtitle">Hľadáte IT analytičku, Android vývojárku alebo partnera pre dáta & AI?</p>
+        </div>
+
+        <div class="contact-cards-grid">
+          <!-- Email Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon icon-email">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="contact-meta">
+              <span class="contact-type" data-i18n="contact.emailLabel">Email</span>
+              <a href="mailto:rusbuin.oct@gmail.com" class="contact-value">rusbuin.oct@gmail.com</a>
+            </div>
+            <button type="button" class="copy-btn" data-copy="rusbuin.oct@gmail.com" title="Skopírovať email" aria-label="Skopírovať email">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon icon-phone">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div class="contact-meta">
+              <span class="contact-type" data-i18n="contact.phoneLabel">Telefón</span>
+              <a href="tel:+421951698832" class="contact-value">+421 951 698 832</a>
+            </div>
+            <button type="button" class="copy-btn" data-copy="+421951698832" title="Skopírovať telefón" aria-label="Skopírovať telefón">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+
+          <!-- LinkedIn Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon icon-linkedin">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </div>
+            <div class="contact-meta">
+              <span class="contact-type">LinkedIn</span>
+              <a href="https://linkedin.com/in/ruslana-buinytska-188602395" target="_blank" rel="noopener noreferrer" class="contact-value">ruslana-buinytska</a>
+            </div>
+            <a href="https://linkedin.com/in/ruslana-buinytska-188602395" target="_blank" rel="noopener noreferrer" class="external-btn" title="Otvoriť LinkedIn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- GitHub Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon icon-github">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div class="contact-meta">
+              <span class="contact-type">GitHub</span>
+              <a href="https://github.com/RusBuin" target="_blank" rel="noopener noreferrer" class="contact-value">github.com/RusBuin</a>
+            </div>
+            <a href="https://github.com/RusBuin" target="_blank" rel="noopener noreferrer" class="external-btn" title="Otvoriť GitHub">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Direct Contact Banner -->
+        <div class="contact-cta-banner glass-panel">
+          <div class="banner-content">
+            <h3 data-i18n="contact.bannerTitle">Máte záujem o spoluprácu?</h3>
+            <p data-i18n="contact.bannerDesc">Rada prediskutujem nové projekty, IT analýzu, Android vývoj či dátové iniciatívy.</p>
+          </div>
+          <div class="banner-actions">
+            <a href="mailto:rusbuin.oct@gmail.com" class="btn btn-primary" data-i18n="contact.sendEmail">Napísať správu</a>
+            <a href="assets/Ruslana_Buinytska_CV.pdf" download="Ruslana_Buinytska_CV.pdf" class="btn btn-outline" data-i18n="contact.downloadCv">Stiahnuť CV v PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="brand-monogram small">RB</span>
+        <p>&copy; <span id="year"></span> Ruslana Buinytska. <span data-i18n="footer.rights">Všetky práva vyhradené.</span></p>
+      </div>
+
+      <div class="footer-center">
+        <span class="footer-badge" data-i18n="footer.badge">🚀 Hostované na GitHub Pages cez GitHub Student Pack</span>
+      </div>
+
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" aria-label="Späť na začiatok stránky" title="Hore">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
